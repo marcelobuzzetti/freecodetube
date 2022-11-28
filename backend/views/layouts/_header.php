@@ -12,7 +12,7 @@ NavBar::begin([
     ],
 ]);
 $menuItems = [
-    ['label' => 'Home', 'url' => ['/site/index']],
+  /*   ['label' => 'Create', 'url' => ['/site/index']], */
 ];
 /* if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -24,6 +24,7 @@ echo Nav::widget([
 if (Yii::$app->user->isGuest) {
     echo Html::tag('div', Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]), ['class' => ['d-flex']]);
 } else {
+    echo Html::tag('div', Html::a('Create', ['/site/index'], ['class' => ['nav-link']]), ['class' => ['d-flex']]);
     echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
         . Html::submitButton(
             'Logout (' . Yii::$app->user->identity->username . ')',
