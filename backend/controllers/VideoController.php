@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Video;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -82,7 +83,7 @@ class VideoController extends Controller
 
         $model->video = UploadedFile::getInstanceByName('video');
        
-        if ($this->request->isPost && $model->save()) {
+        if (Yii::$app->request->isPost && $model->save()) {
                 return $this->redirect(['view', 'video_id' => $model->video_id]);
         }
 
