@@ -24,7 +24,7 @@ echo Nav::widget([
 if (Yii::$app->user->isGuest) {
     echo Html::tag('div', Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]), ['class' => ['d-flex']]);
 } else {
-    echo Html::tag('div', Html::a('Create', ['/site/index'], ['class' => ['nav-link']]), ['class' => ['d-flex']]);
+    echo Html::tag('div', Html::a('Create', ['/video/create'], ['class' => ['nav-link']]), ['class' => ['d-flex']]);
     echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
         . Html::submitButton(
             'Logout (' . Yii::$app->user->identity->username . ')',
