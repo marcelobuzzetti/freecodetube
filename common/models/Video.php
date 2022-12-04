@@ -162,6 +162,6 @@ class Video extends \yii\db\ActiveRecord
 
     public function getThumbnailLink()
     {
-        return Yii::$app->params['frontendUrl'].'storage/thumbs/'.$this->video_id.'.jpg';
+        return $this->has_thumbnail ? Yii::$app->params['frontendUrl'].'storage/thumbs/'.$this->video_id.'.jpg' : '';
     }
 }
