@@ -21,16 +21,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <p class="m-0">Arraste e solte os arquivos de vídeo para fazer o envio</p>
         <p class="text-muted">Seus vídeos ficarão privados até que você os publique.</p>
 
-        <?php \yii\bootstrap5\ActiveForm::begin([
+        <?php $form = \yii\bootstrap5\ActiveForm::begin([
             'options' => [
                 'enctype' => 'multipart/form-data'
             ]
         ]) ?>
 
-        <button class="btn btn-primary btn-file">
-            Selecione o arquivo
-            <input type="file" name="video" id="videoFile">
-        </button>
+            <p><?php echo $form->errorSummary($model) ?></p>
+
+            <button class="btn btn-primary btn-file">
+                Selecione o arquivo
+                <input type="file" name="video" id="videoFile">
+            </button>
 
         <?php \yii\bootstrap5\ActiveForm::end() ?>
     </div>

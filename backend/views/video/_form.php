@@ -16,37 +16,40 @@ use yii\bootstrap5\ActiveForm;
 
     <div class="row">
         <div class="col-sm-8">
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-       <div class="form-group">
-        <label for=""><?php echo $model->getAttributeLabel('thumbnail') ?></label>
-        <div class="input-group mb-3">
-                <input type="file" class="form-control" id="thumbnail" name="thumbnail">
-                <label class="input-group-text" for="thumbnail">Browse</label>
-        </div>
-       </div>
-
-        <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-4">
-
-        <div class="ratio ratio-16x9 mb-3">
-            <video src="<?php echo $model->getVideoLink() ?>" title="YouTube video" allowfullscreen controls poster="<?php echo $model->getThumbnailLink() ?>"></video>
-        </div>
+            <?php echo $form->errorSummary($model) ?>
             
-            <div class="mb-3">
-                <div class="text-muted">Video Link</div>
-                <a href="<?php echo $model->getVideoLink() ?>">Open Video</a>
-            </div>
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-            <div class="mb-3">
-                <div class="text-muted">Video Name</div>
-                <?php echo $model->video_name ?>
-            </div>
+            <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-            <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
+        <div class="form-group">
+            <label for=""><?php echo $model->getAttributeLabel('thumbnail') ?></label>
+            <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+                    <label class="input-group-text" for="thumbnail">Browse</label>
+            </div>
+        </div>
+
+            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-sm-4">
+
+            <div class="ratio ratio-16x9 mb-3">
+                <video src="<?php echo $model->getVideoLink() ?>" title="YouTube video" allowfullscreen controls poster="<?php echo $model->getThumbnailLink() ?>"></video>
+            </div>
+                
+                <div class="mb-3">
+                    <div class="text-muted">Video Link</div>
+                    <a href="<?php echo $model->getVideoLink() ?>">Open Video</a>
+                </div>
+
+                <div class="mb-3">
+                    <div class="text-muted">Video Name</div>
+                    <?php echo $model->video_name ?>
+                </div>
+
+                <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
         </div>
     </div>
 
