@@ -1,11 +1,14 @@
 <?php
 
+use backend\assets\TagsInputAsset;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
 /** @var yii\widgets\ActiveForm $form */
+
+TagsInputAsset::register($this);
 ?>
 
 <div class="video-form">
@@ -31,7 +34,9 @@ use yii\bootstrap5\ActiveForm;
             </div>
         </div>
 
-            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'tags', [
+                'inputOptions' => ['data-role' => 'tagsinput']
+            ])->textInput(['maxlength' => true]) ?>
             </div>
             <div class="col-sm-4">
 
