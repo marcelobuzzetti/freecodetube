@@ -11,7 +11,7 @@ use yii\bootstrap5\Nav;
         'items' => [
             [
                 'label' => 'Home',
-                'url' => ['/site/index']
+                'url' => ['/video/index']
             ],
             [
                 'label' => 'History',
