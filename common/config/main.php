@@ -1,5 +1,7 @@
 <?php
 return [
+    'name' => 'FreeCodeTube',
+    'sourceLanguage'=>'pt-br',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

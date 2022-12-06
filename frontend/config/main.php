@@ -12,6 +12,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'language' => 'pt-BR',
+    'sourceLanguage'=>'pt-BR',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -43,6 +44,9 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'assetManager' => [
+            'appendTimestamp' => true
         ],
        
     ],
