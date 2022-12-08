@@ -1,5 +1,7 @@
 <?php
 use \yii\helpers\Url;
+use yii\widgets\Pjax;
+
 /** @var \common\models\Video $model*/
 ?>
 <div class="row">
@@ -13,12 +15,11 @@ use \yii\helpers\Url;
               <?php echo $model->getViews()->count() ?> views . <?php echo Yii::$app->formatter->asDate($model->created_at) ?>
             </div>
             <div>
-                <a href="<?php echo Url::to(['/video/like', 'id' => $model->video_id]) ?>" class="btn btn-sm btn-outline-primary" data-method="post">
-                    <i class="fas fa-thumbs-up"></i> 9
-                </a>
-                <button class="btn btn-sm btn-outline-secondary">
-                    <i class="fas fa-thumbs-down"></i> 3
-                </button>
+                <?php Pjax::begin() ?>
+                  <?php echo $this->render('_buttons', [
+                    'model' => $model
+                  ]) ?> 
+                <?php Pjax::end() ?>
             </div>
         </div>
     </div>

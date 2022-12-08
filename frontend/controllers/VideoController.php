@@ -69,8 +69,14 @@ class VideoController extends Controller
         $videoLike = new VideoLike();
         $videoLike->video_id = $id;
         $videoLike->user_id = $userId;
+        $videoLike->type = VideoLike::TYPE_LIKE;
         $videoLike->created_at = time();
         $videoLike->save();
+
+        return $this->renderAjax('_buttons', [
+            'model' => $video
+        ]);
+
     }
 
     protected function findVideo($id)
