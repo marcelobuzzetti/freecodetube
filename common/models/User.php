@@ -60,6 +60,15 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getSubscribers()
+    {
+        return $this->hasMany(User::class, ['id' => 'user_id'])->viaTable('subscriber',['channel_id'=> 'id']);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public static function findIdentity($id)
