@@ -25,7 +25,9 @@ use yii\widgets\Pjax;
       </div>
     </div>
     <div>
-      <p><?php echo $model->createdBy->username ?></p>
+      <p><?php echo Html::a($model->createdBy->username, [
+        '/channel/view', 'username' => $model->createdBy->username
+      ]) ?></p>
       <p><?php echo Html::encode($model->description) ?></p>
     </div>
   </div>
