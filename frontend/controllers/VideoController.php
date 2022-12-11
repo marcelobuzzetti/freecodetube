@@ -66,12 +66,39 @@ class VideoController extends Controller
     {
         $video = $this->findVideo($id);
         $userId = \Yii::$app->user->id;
-        $videoLike = new VideoLike();
-        $videoLike->video_id = $id;
-        $videoLike->user_id = $userId;
-        $videoLike->type = VideoLike::TYPE_LIKE;
-        $videoLike->created_at = time();
-        $videoLike->save();
+
+        $videoLikeDislike = VideoLike::find()->userIdVideoId($userId, $id)->one();
+
+        if(!$videoLikeDislike) {
+            $this->saveLikeDislike($id, $userId, VideoLike::TYPE_LIKE);
+        } elseif($videoLikeDislike->type === VideoLike::TYPE_LIKE) {
+            $videoLikeDislike->delete();
+        } else {
+            $videoLikeDislike->delete();
+            $this->saveLikeDislike($id, $userId, VideoLike::TYPE_LIKE);
+        }
+
+        return $this->renderAjax('_buttons', [
+            'model' => $video
+        ]);
+
+    }
+
+    public function actionDislike($id)
+    {
+        $video = $this->findVideo($id);
+        $userId = \Yii::$app->user->id;
+
+        $videoLikeDislike = VideoLike::find()->userIdVideoId($userId, $id)->one();
+
+        if(!$videoLikeDislike) {
+            $this->saveLikeDislike($id, $userId, VideoLike::TYPE_DISLIKE);
+        } elseif($videoLikeDislike->type === VideoLike::TYPE_DISLIKE) {
+            $videoLikeDislike->delete();
+        } else {
+            $videoLikeDislike->delete();
+            $this->saveLikeDislike($id, $userId, VideoLike::TYPE_DISLIKE);
+        }
 
         return $this->renderAjax('_buttons', [
             'model' => $video
@@ -86,5 +113,15 @@ class VideoController extends Controller
             throw new NotFoundHttpException("Video doesn't exists!!!");
         }
         return $video;
+    }
+
+    protected function saveLikeDislike($videoId, $userId, $type)
+    {
+        $videoLikeDislike = new VideoLike();
+        $videoLikeDislike->video_id = $videoId;
+        $videoLikeDislike->user_id = $userId;
+        $videoLikeDislike->type = $type;
+        $videoLikeDislike->created_at = time();
+        $videoLikeDislike->save();
     }
 }
