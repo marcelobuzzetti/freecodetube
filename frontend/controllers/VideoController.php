@@ -106,6 +106,23 @@ class VideoController extends Controller
 
     }
 
+    public function actionSearch($keyword)
+    {
+        $query = Video::find()->published()->latest();
+
+        if($keyword){
+            $query->byKeyword($keyword)
+            ->orderBy("MATCH(title,description,tags) AGAINST (:keyword) DESC")->params([':keyword' => $keyword]);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('search', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
     protected function findVideo($id)
     {
         $video = Video::findOne($id);
