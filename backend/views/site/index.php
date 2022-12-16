@@ -13,9 +13,10 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index d-flex flex-wrap">
     <div class="card m-2" style="width: 14rem;">
-        <div class="ratio ratio-16x9 mb-3">
-            <video src="<?php echo $latestVideo->getVideoLink() ?>" title="YouTube video" allowfullscreen poster="<?php echo $latestVideo->getThumbnailLink() ?>"></video>
-        </div>
+        <?php if($latestVideo): ?>
+            <div class="ratio ratio-16x9 mb-3">
+                <video src="<?php echo $latestVideo->getVideoLink() ?>" title="YouTube video" allowfullscreen poster="<?php echo $latestVideo->getThumbnailLink() ?>"></video>
+            </div>
         <div class="card-body">
             <h5 class="card-title"><?php echo $latestVideo->title ?></h5>
             <p class="card-text">
@@ -24,6 +25,11 @@ $this->title = 'My Yii Application';
                 </p>
             <a href="<?php echo Url::to(['/video/update', 'video_id' => $latestVideo->video_id]) ?>" class="btn btn-primary">Edit</a>
         </div>
+        <?php else: ?>
+            <div class="card-body">
+                You dont have uploaded videos yet
+            </div>
+        <?php endif ?>
     </div>
     <div class="card m-2" style="width: 14rem;">
         <div class="card-body">
