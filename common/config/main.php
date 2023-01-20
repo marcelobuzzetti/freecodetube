@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => 'FreeCodeTube',
+    'name' => 'Youtube Clone',
     'sourceLanguage'=>'pt-br',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
