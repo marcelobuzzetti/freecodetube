@@ -3,7 +3,7 @@
 
 use yii\bootstrap5\LinkPager;
 use yii\widgets\ListView;
-
+$this->title = 'Youtube Clone';
 ?>
 
 <?php echo ListView::widget([

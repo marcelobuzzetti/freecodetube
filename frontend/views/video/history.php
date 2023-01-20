@@ -2,7 +2,7 @@
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 
 use yii\widgets\ListView;
-
+$this->title = 'Youtube Clone';
 ?>
 <h1>My History</h1>
 <?php echo ListView::widget([
