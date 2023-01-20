@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /** @var integer $numberOfSubscribers */
 /** @var \common\models\Subscriber[] $subscribers */
 
-$this->title = 'My Yii Application';
+$this->title = 'Youtube Clone';
 ?>
 <div class="site-index d-flex flex-wrap">
     <div class="card m-2" style="width: 14rem;">
